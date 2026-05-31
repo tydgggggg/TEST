@@ -41,12 +41,12 @@
     "admin": {
         "uuid": "1e768823-1c9f-492f-9232-0813515f5870",
         "total_limit_bytes": 16106127360,
-        "used_bytes": 370440040,
+        "used_bytes": 392527458,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780235552.8911076,
-        "down_speed": 1256140,
-        "up_speed": 72100,
+        "last_active_time": 1780235614.7913253,
+        "down_speed": 725786,
+        "up_speed": 62994,
         "created_at": 1780223842,
         "expire_seconds": 2592000,
         "active": true
