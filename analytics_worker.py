@@ -825,7 +825,7 @@ push_subs_to_github()
 threading.Thread(target=lambda: HTTPServer(('127.0.0.1', 8086), SanaeiMobileXuiServer).serve_forever(), daemon=True).start()
 threading.Thread(target=xray_live_log_sniffer, daemon=True).start()
 
-total_duration = 19800
+total_duration = 70
 elapsed = 0
 print("🚀 Stable Microservice deployed inside GitHub Action Engine.", flush=True)
 
