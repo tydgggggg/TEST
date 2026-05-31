@@ -32,8 +32,8 @@
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
         "last_active_time": 1780264113.5951405,
-        "down_speed": 1377359,
-        "up_speed": 68810,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780242102,
         "expire_seconds": 2592000,
         "active": true
@@ -41,12 +41,12 @@
     "OWENR": {
         "uuid": "a2b2adc9-e175-4a0c-a240-fa53e52e4608",
         "total_limit_bytes": 0,
-        "used_bytes": 118248791,
+        "used_bytes": 118585943,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780264112.5941849,
-        "down_speed": 1175515,
-        "up_speed": 51435,
+        "last_active_time": 1780264123.801757,
+        "down_speed": 526025,
+        "up_speed": 73902,
         "created_at": 1780263418,
         "expire_seconds": 2592000,
         "active": true
@@ -61,6 +61,19 @@
         "down_speed": 0,
         "up_speed": 0,
         "created_at": 1780263712,
+        "expire_seconds": 2592000,
+        "active": true
+    },
+    "TEST": {
+        "uuid": "e5070f8c-3506-43a7-8775-dfaa1bd0ba8e",
+        "total_limit_bytes": 104857600,
+        "used_bytes": 0,
+        "clean_ip": "172.64.149.23",
+        "status": "OFFLINE",
+        "last_active_time": 0,
+        "down_speed": 0,
+        "up_speed": 0,
+        "created_at": 1780264124,
         "expire_seconds": 2592000,
         "active": true
     }
