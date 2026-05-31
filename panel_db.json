@@ -41,12 +41,12 @@
     "OWENR": {
         "uuid": "a2b2adc9-e175-4a0c-a240-fa53e52e4608",
         "total_limit_bytes": 0,
-        "used_bytes": 417047588,
+        "used_bytes": 460566884,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780265274.3097157,
-        "down_speed": 582512,
-        "up_speed": 61118,
+        "last_active_time": 1780265335.504132,
+        "down_speed": 510668,
+        "up_speed": 77604,
         "created_at": 1780263418,
         "expire_seconds": 2592000,
         "active": true
@@ -54,12 +54,12 @@
     "F44mir": {
         "uuid": "0cc621a8-5a0a-4133-9e80-43294b1febac",
         "total_limit_bytes": 1073741824,
-        "used_bytes": 31781833,
+        "used_bytes": 34664953,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780265271.7076256,
-        "down_speed": 1004542,
-        "up_speed": 75812,
+        "last_active_time": 1780265326.2767239,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780263712,
         "expire_seconds": 2592000,
         "active": true
