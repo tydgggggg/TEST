@@ -64,19 +64,6 @@
         "expire_seconds": 86400,
         "active": false
     },
-    "67TEST": {
-        "uuid": "7f2af0e4-7486-450c-a3bf-88cf87f567c3",
-        "total_limit_bytes": 104857600,
-        "used_bytes": 8276535,
-        "clean_ip": "172.64.149.23",
-        "status": "OFFLINE",
-        "last_active_time": 1780241868.1176717,
-        "down_speed": 0,
-        "up_speed": 0,
-        "created_at": 1780241699,
-        "expire_seconds": 2592000,
-        "active": false
-    },
     "20GB": {
         "uuid": "b734433b-30f3-43d2-b4f9-c91af64d22d3",
         "total_limit_bytes": 21474836480,
