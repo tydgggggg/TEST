@@ -145,12 +145,12 @@
     "ALI": {
         "uuid": "1c51959c-9c6c-4951-a134-35cf1b1b18ef",
         "total_limit_bytes": 0,
-        "used_bytes": 32418418,
+        "used_bytes": 33765519,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780247640.4419758,
-        "down_speed": 0,
-        "up_speed": 0,
+        "last_active_time": 1780247719.493578,
+        "down_speed": 751511,
+        "up_speed": 72322,
         "created_at": 1780246560,
         "expire_seconds": 2592000,
         "active": true
