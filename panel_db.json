@@ -54,12 +54,12 @@
     "5GB": {
         "uuid": "b68e8582-0e9f-4aa8-9d62-df7faa299249",
         "total_limit_bytes": 6442450944,
-        "used_bytes": 859406041,
+        "used_bytes": 860343380,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780253120.5734303,
-        "down_speed": 1331256,
-        "up_speed": 53207,
+        "last_active_time": 1780253177.414577,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780233496,
         "expire_seconds": 2592000,
         "active": true
@@ -145,12 +145,12 @@
     "ALI": {
         "uuid": "1c51959c-9c6c-4951-a134-35cf1b1b18ef",
         "total_limit_bytes": 0,
-        "used_bytes": 112299816,
+        "used_bytes": 113229647,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780253111.96764,
-        "down_speed": 0,
-        "up_speed": 0,
+        "last_active_time": 1780253185.8227937,
+        "down_speed": 1275786,
+        "up_speed": 66303,
         "created_at": 1780252496,
         "expire_seconds": 2592000,
         "active": true
