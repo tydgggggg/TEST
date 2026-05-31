@@ -106,12 +106,12 @@
     "100MB": {
         "uuid": "9175d875-2c4d-4dd2-a21d-83a73794142c",
         "total_limit_bytes": 104857600,
-        "used_bytes": 14982320,
+        "used_bytes": 18605571,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780240371.0559092,
-        "down_speed": 1196919,
-        "up_speed": 50196,
+        "last_active_time": 1780240425.5028822,
+        "down_speed": 1052534,
+        "up_speed": 77600,
         "created_at": 1780240119,
         "expire_seconds": 2592000,
         "active": true
