@@ -88,6 +88,7 @@ def push_subs_to_github():
                 try: os.remove(os.path.join('sub_links', f))
                 except: pass
 
+        now = int(time.time())
         for k, v in configs_db.items():
             if not v.get("active", True):
                 payload_str = "// ACCOUNT EXPIRED OR DISABLED\n"
@@ -96,11 +97,25 @@ def push_subs_to_github():
                 c_ip = v.get("clean_ip", DEFAULT_CLEAN_IP)
                 total_bytes = v["total_limit_bytes"]
                 rem_bytes = max(0, total_bytes - v["used_bytes"]) if total_bytes > 0 else 0
-                sub_info_comment = f"// USER: {k} | USED: {format_bytes(v['used_bytes'])} | TOTAL: {format_bytes(total_bytes) if total_bytes > 0 else 'نامحدود'}\n"
                 
+                # محاسبه دقیق زمان باقی‌مانده
+                passed_seconds = now - v.get("created_at", now)
+                total_seconds = v.get("expire_seconds", 2592000)
+                rem_seconds = max(0, total_seconds - passed_seconds)
+                rem_d = int(rem_seconds // 86400)
+                rem_h = int((rem_seconds % 86400) // 3600)
+                
+                # ۱. کانفیگ‌های اصلی اتصال کلاینت
                 clean_link = f"vless://{v['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#{k}_Clean"
                 regular_link = f"vless://{v['uuid']}@{tunnel_host}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0#{k}_Direct"
-                payload_str = f"{sub_info_comment}{clean_link}\n{regular_link}\n"
+                
+                # ۲. کانفیگ‌های کاملاً واقعی و فعال اما با تگ نام‌گذاری وضعیت برای نمایش اطلاعات به کاربر
+                info_used = f"vless://{v['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#📊 مصرف شده: {format_bytes(v['used_bytes'])}"
+                info_rem = f"vless://{v['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#💾 باقی‌مانده: {format_bytes(rem_bytes) if total_bytes > 0 else 'نامحدود'}"
+                info_time = f"vless://{v['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#⏳ زمان: {rem_d} روز و {rem_h} ساعت"
+                
+                # سرهم کردن کانفیگ‌ها در خروجی نهایی ساب
+                payload_str = f"{clean_link}\n{regular_link}\n{info_used}\n{info_rem}\n{info_time}\n"
                 payload = base64.b64encode(payload_str.encode('utf-8')).decode('utf-8')
             
             with open(os.path.join('sub_links', k), 'w') as sf:
@@ -113,7 +128,7 @@ def push_subs_to_github():
         subprocess.run("git commit -m '🔗 Update stable subscription links and db [Skip CI]' || true", shell=True)
         subprocess.run("git pull --rebase || true", shell=True)
         subprocess.run("git push || true", shell=True)
-        print("🔗 [GitHub Sync] Static sub links successfully updated on repository!", flush=True)
+        print("🔗 [GitHub Sync] Static info-embedded sub links successfully updated!", flush=True)
     except Exception as e:
         print(f"❌ Error in push_subs_to_github: {e}", flush=True)
 
@@ -362,11 +377,22 @@ class SanaeiMobileXuiServer(BaseHTTPRequestHandler):
                 
                 total_bytes = u_data["total_limit_bytes"]
                 rem_bytes = max(0, total_bytes - u_data["used_bytes"]) if total_bytes > 0 else 0
-                sub_info_comment = f"// USER: {target_user} | USED: {format_bytes(u_data['used_bytes'])} | TOTAL: {format_bytes(total_bytes) if total_bytes > 0 else 'نامحدود'} | REMAINING: {format_bytes(rem_bytes) if total_bytes > 0 else 'نامحدود'}\n"
+                
+                now = int(time.time())
+                passed_seconds = now - u_data.get("created_at", now)
+                total_seconds = u_data.get("expire_seconds", 2592000)
+                rem_seconds = max(0, total_seconds - passed_seconds)
+                rem_d = int(rem_seconds // 86400)
+                rem_h = int((rem_seconds % 86400) // 3600)
                 
                 clean_link = f"vless://{u_data['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#{target_user}_Clean"
                 regular_link = f"vless://{u_data['uuid']}@{tunnel_host}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0#{target_user}_Direct"
-                payload = f"{sub_info_comment}{clean_link}\n{regular_link}\n"
+                
+                info_used = f"vless://{u_data['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#📊 مصرف شده: {format_bytes(u_data['used_bytes'])}"
+                info_rem = f"vless://{u_data['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#💾 باقی‌مانده: {format_bytes(rem_bytes) if total_bytes > 0 else 'نامحدود'}"
+                info_time = f"vless://{u_data['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#⏳ زمان: {rem_d} روز و {rem_h} ساعت"
+                
+                payload = f"{clean_link}\n{regular_link}\n{info_used}\n{info_rem}\n{info_time}\n"
                 
                 encoded_payload = base64.b64encode(payload.encode('utf-8')).decode('utf-8')
                 self.send_response(200)
@@ -558,7 +584,7 @@ class SanaeiMobileXuiServer(BaseHTTPRequestHandler):
                         }} else {{
                             let fixedSubUrl = "https://raw.githubusercontent.com/" + repoName + "/main/sub_links/" + user;
                             navigator.clipboard.writeText(fixedSubUrl);
-                            alert("🔗 لینک ساب دائمی گیت‌هاب با موفقیت کپی شد داداش! این لینک هیچ‌وقت تغییر نمی‌کند و با ریست شدن تانل قطع نمی‌شود.");
+                            alert("🔗 لینک ساب دائمی گیت‌هاب همراه با شمارنده‌های زنده ترافیک کپی شد داداش!");
                         }}
                     }}
 
@@ -795,7 +821,7 @@ def xray_live_log_sniffer():
                     save_database()
 
 sync_xray_core()
-push_subs_to_github() # ران شدن فوری در استارت‌آپ برای همگام‌سازی تانل جدید با لینک ثابت
+push_subs_to_github()
 threading.Thread(target=lambda: HTTPServer(('127.0.0.1', 8086), SanaeiMobileXuiServer).serve_forever(), daemon=True).start()
 threading.Thread(target=xray_live_log_sniffer, daemon=True).start()
 
