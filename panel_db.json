@@ -12,19 +12,6 @@
         "expire_seconds": 31536000,
         "active": true
     },
-    "5GB": {
-        "uuid": "1512d942-8c32-4c76-bedb-be5c4baf8b12",
-        "total_limit_bytes": 536870912000,
-        "used_bytes": 166429982720,
-        "clean_ip": "172.64.149.23",
-        "status": "OFFLINE",
-        "last_active_time": 0,
-        "down_speed": 0,
-        "up_speed": 0,
-        "created_at": 1780220390,
-        "expire_seconds": 2592000,
-        "active": true
-    },
     "Jhj": {
         "uuid": "46d76443-b403-46da-ae00-fceee222265e",
         "total_limit_bytes": 1788853878784,
@@ -54,12 +41,12 @@
     "admin": {
         "uuid": "1e768823-1c9f-492f-9232-0813515f5870",
         "total_limit_bytes": 16106127360,
-        "used_bytes": 230654612,
+        "used_bytes": 233654067,
         "clean_ip": "172.64.149.23",
-        "status": "OFFLINE",
-        "last_active_time": 1780233297.5520473,
-        "down_speed": 0,
-        "up_speed": 0,
+        "status": "ONLINE",
+        "last_active_time": 1780233420.8687446,
+        "down_speed": 1102229,
+        "up_speed": 75777,
         "created_at": 1780223842,
         "expire_seconds": 2592000,
         "active": true
