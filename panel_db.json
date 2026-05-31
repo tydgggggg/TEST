@@ -2,12 +2,12 @@
     "6GB": {
         "uuid": "04577598-8a07-4dbc-a26e-0654531378fe",
         "total_limit_bytes": 6442450944,
-        "used_bytes": 903268217,
+        "used_bytes": 906049874,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780263445.0713334,
-        "down_speed": 920305,
-        "up_speed": 62883,
+        "last_active_time": 1780263507.1303303,
+        "down_speed": 545428,
+        "up_speed": 67948,
         "created_at": 1780233349,
         "expire_seconds": 2592000,
         "active": true
@@ -28,12 +28,12 @@
     "20GB": {
         "uuid": "b734433b-30f3-43d2-b4f9-c91af64d22d3",
         "total_limit_bytes": 21474836480,
-        "used_bytes": 110021926,
+        "used_bytes": 114528864,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780263446.472797,
-        "down_speed": 884931,
-        "up_speed": 78439,
+        "last_active_time": 1780263507.1299958,
+        "down_speed": 1382533,
+        "up_speed": 54364,
         "created_at": 1780242102,
         "expire_seconds": 2592000,
         "active": true
