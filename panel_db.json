@@ -1,17 +1,4 @@
 {
-    "Jhj": {
-        "uuid": "46d76443-b403-46da-ae00-fceee222265e",
-        "total_limit_bytes": 1788853878784,
-        "used_bytes": 71441872690,
-        "clean_ip": "172.64.149.23",
-        "status": "OFFLINE",
-        "last_active_time": 1780226590.5261242,
-        "down_speed": 0,
-        "up_speed": 0,
-        "created_at": 1780220621,
-        "expire_seconds": 2592000,
-        "active": false
-    },
     "AOGE": {
         "uuid": "ae1a04f2-fe6e-4154-90e0-1a1932dddd40",
         "total_limit_bytes": 53687091200,
