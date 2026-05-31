@@ -63,18 +63,5 @@
         "created_at": 1780263712,
         "expire_seconds": 2592000,
         "active": true
-    },
-    "TEST": {
-        "uuid": "e5070f8c-3506-43a7-8775-dfaa1bd0ba8e",
-        "total_limit_bytes": 104857600,
-        "used_bytes": 135532,
-        "clean_ip": "172.64.149.23",
-        "status": "OFFLINE",
-        "last_active_time": 1780264226.4925318,
-        "down_speed": 0,
-        "up_speed": 0,
-        "created_at": 1780264124,
-        "expire_seconds": 2592000,
-        "active": true
     }
 }
