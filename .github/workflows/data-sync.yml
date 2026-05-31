@@ -138,6 +138,5 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_PAT }}
       run: |
-        WORKFLOW_NAME=$(basename ${{ github.event_path }} | sed 's/\.json/\.yml/g' || echo "data-sync.yml")
-        gh workflow run $WORKFLOW_NAME --ref main
+        gh workflow run data-sync.yml --ref main
         echo "⛓️ Next encryption cycle synchronized."
