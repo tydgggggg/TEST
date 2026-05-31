@@ -10,7 +10,6 @@ import secrets
 import re
 import sys
 from urllib.parse import parse_qs
-import urllib.parse
 
 CONFIG_PATH = "/usr/local/etc/xray/config.json"
 XRAY_LOG_PATH = "/usr/local/etc/xray/xray_runtime.log"
@@ -23,6 +22,9 @@ SESSION_TOKEN = secrets.token_hex(16)
 
 SYSTEM_LIVE_LOGS = []
 USER_TARGET_SITES = {}
+
+# دریافت هوشمند نام مخزن برای ساخت لینک ساب دائمی روی گیت‌هاب
+repo_full_name = os.environ.get('GITHUB_REPOSITORY', 'username/repo')
 
 # خواندن هدر تانل فعال
 if os.path.exists('active_edge_host.txt'):
@@ -76,6 +78,45 @@ def save_database():
     with open(DB_PATH, 'w') as f:
         json.dump(configs_db, f, indent=4)
 
+def push_subs_to_github():
+    """تولید اتوماتیک لینک‌های ساب و آپلود مستقیم به گیت‌هاب جهت پایداری همیشگی لینک ساب"""
+    try:
+        os.makedirs('sub_links', exist_ok=True)
+        # حذف فایل‌های کاربران پاک شده
+        for f in os.listdir('sub_links'):
+            if f not in configs_db:
+                try: os.remove(os.path.join('sub_links', f))
+                except: pass
+
+        for k, v in configs_db.items():
+            if not v.get("active", True):
+                payload_str = "// ACCOUNT EXPIRED OR DISABLED\n"
+                payload = base64.b64encode(payload_str.encode('utf-8')).decode('utf-8')
+            else:
+                c_ip = v.get("clean_ip", DEFAULT_CLEAN_IP)
+                total_bytes = v["total_limit_bytes"]
+                rem_bytes = max(0, total_bytes - v["used_bytes"]) if total_bytes > 0 else 0
+                sub_info_comment = f"// USER: {k} | USED: {format_bytes(v['used_bytes'])} | TOTAL: {format_bytes(total_bytes) if total_bytes > 0 else 'نامحدود'}\n"
+                
+                clean_link = f"vless://{v['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#{k}_Clean"
+                regular_link = f"vless://{v['uuid']}@{tunnel_host}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0#{k}_Direct"
+                payload_str = f"{sub_info_comment}{clean_link}\n{regular_link}\n"
+                payload = base64.b64encode(payload_str.encode('utf-8')).decode('utf-8')
+            
+            with open(os.path.join('sub_links', k), 'w') as sf:
+                sf.write(payload)
+        
+        # فرآیند کامیت و پوش کاملاً موازی و امن بدون ایجاد لوپ مصرف ترافیک
+        subprocess.run("git config --local user.email 'action@github.com' || true", shell=True)
+        subprocess.run("git config --local user.name 'GitHub Action' || true", shell=True)
+        subprocess.run("git add sub_links/* panel_db.json || true", shell=True)
+        subprocess.run("git commit -m '🔗 Update stable subscription links and db [Skip CI]' || true", shell=True)
+        subprocess.run("git pull --rebase || true", shell=True)
+        subprocess.run("git push || true", shell=True)
+        print("🔗 [GitHub Sync] Static sub links successfully updated on repository!", flush=True)
+    except Exception as e:
+        print(f"❌ Error in push_subs_to_github: {e}", flush=True)
+
 def check_expiration_and_limits():
     now = int(time.time())
     changed = False
@@ -99,6 +140,7 @@ def check_expiration_and_limits():
     if changed:
         save_database()
         sync_xray_core()
+        push_subs_to_github()
 
 def sync_xray_core():
     clients = [{"id": u_data["uuid"], "email": u_name, "level": 0} for u_name, u_data in configs_db.items() if u_data.get("active", True)]
@@ -228,6 +270,7 @@ class SanaeiMobileXuiServer(BaseHTTPRequestHandler):
                 USER_TARGET_SITES[username] = []
                 save_database()
                 sync_xray_core()
+                push_subs_to_github()
                 
         elif action == 'toggle':
             username = params.get('username', [''])[0]
@@ -238,6 +281,7 @@ class SanaeiMobileXuiServer(BaseHTTPRequestHandler):
                     configs_db[username]["status"] = "OFFLINE"
                 save_database()
                 sync_xray_core()
+                push_subs_to_github()
                 
         elif action == 'delete':
             username = params.get('username', [''])[0]
@@ -246,6 +290,7 @@ class SanaeiMobileXuiServer(BaseHTTPRequestHandler):
                 if username in USER_TARGET_SITES: del USER_TARGET_SITES[username]
                 save_database()
                 sync_xray_core()
+                push_subs_to_github()
         
         self.send_response(303)
         self.send_header('Location', '/')
@@ -317,22 +362,11 @@ class SanaeiMobileXuiServer(BaseHTTPRequestHandler):
                 
                 total_bytes = u_data["total_limit_bytes"]
                 rem_bytes = max(0, total_bytes - u_data["used_bytes"]) if total_bytes > 0 else 0
-                
-                # رفع کامل باگ تداخل کوتیشن‌ها در متون فارسی کلاینت
-                txt_used = f"📊 مصرف شده: {format_bytes(u_data['used_bytes'])}"
-                txt_total = f"📈 حجم کل: {format_bytes(total_bytes) if total_bytes > 0 else 'نامحدود'}"
-                txt_rem = f"📉 باقی‌مانده: {format_bytes(rem_bytes) if total_bytes > 0 else 'نامحدود'}"
-                
-                fake_used = f"vless://00000000-0000-0000-0000-000000000000@127.0.0.1:1080?encryption=none#{urllib.parse.quote(txt_used)}"
-                fake_total = f"vless://00000000-0000-0000-0000-000000000000@127.0.0.1:1080?encryption=none#{urllib.parse.quote(txt_total)}"
-                fake_rem = f"vless://00000000-0000-0000-0000-000000000000@127.0.0.1:1080?encryption=none#{urllib.parse.quote(txt_rem)}"
-                
                 sub_info_comment = f"// USER: {target_user} | USED: {format_bytes(u_data['used_bytes'])} | TOTAL: {format_bytes(total_bytes) if total_bytes > 0 else 'نامحدود'} | REMAINING: {format_bytes(rem_bytes) if total_bytes > 0 else 'نامحدود'}\n"
                 
                 clean_link = f"vless://{u_data['uuid']}@{c_ip}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&host={tunnel_host}&sni={tunnel_host}#{target_user}_Clean"
                 regular_link = f"vless://{u_data['uuid']}@{tunnel_host}:443?path=%2Fkillpv2&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0#{target_user}_Direct"
-                
-                payload = f"{sub_info_comment}{fake_used}\n{fake_total}\n{fake_rem}\n{clean_link}\n{regular_link}\n"
+                payload = f"{sub_info_comment}{clean_link}\n{regular_link}\n"
                 
                 encoded_payload = base64.b64encode(payload.encode('utf-8')).decode('utf-8')
                 self.send_response(200)
@@ -516,9 +550,16 @@ class SanaeiMobileXuiServer(BaseHTTPRequestHandler):
                     }}
 
                     function copyFixedSubscription(user) {{
-                        let fixedSubUrl = "https://" + window.location.host + "/sub/" + user;
-                        navigator.clipboard.writeText(fixedSubUrl);
-                        alert("🔗 لینک ساب پایدار این کلاینت کپی شد داداش! با ران مجدد تغییر نمیکند.");
+                        let repoName = '{repo_full_name}';
+                        if (repoName === 'username/repo') {{
+                            let fixedSubUrl = "https://" + window.location.host + "/sub/" + user;
+                            navigator.clipboard.writeText(fixedSubUrl);
+                            alert("🔗 لینک ساب موقت کپی شد داداش (چون روی گیت‌هاب ران نشده).");
+                        }} else {{
+                            let fixedSubUrl = "https://raw.githubusercontent.com/" + repoName + "/main/sub_links/" + user;
+                            navigator.clipboard.writeText(fixedSubUrl);
+                            alert("🔗 لینک ساب دائمی گیت‌هاب با موفقیت کپی شد داداش! این لینک هیچ‌وقت تغییر نمی‌کند و با ریست شدن تانل قطع نمی‌شود.");
+                        }}
                     }}
 
                     const cleanIpsToTest = [];
@@ -754,6 +795,7 @@ def xray_live_log_sniffer():
                     save_database()
 
 sync_xray_core()
+push_subs_to_github() # ران شدن فوری در استارت‌آپ برای همگام‌سازی تانل جدید با لینک ثابت
 threading.Thread(target=lambda: HTTPServer(('127.0.0.1', 8086), SanaeiMobileXuiServer).serve_forever(), daemon=True).start()
 threading.Thread(target=xray_live_log_sniffer, daemon=True).start()
 
