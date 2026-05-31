@@ -30,11 +30,24 @@
         "total_limit_bytes": 1788853878784,
         "used_bytes": 70900568948,
         "clean_ip": "172.64.149.23",
-        "status": "ONLINE",
+        "status": "OFFLINE",
         "last_active_time": 1780221079.8119137,
-        "down_speed": 736361,
-        "up_speed": 53837,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780220621,
+        "expire_seconds": 2592000,
+        "active": true
+    },
+    "AOGE": {
+        "uuid": "ae1a04f2-fe6e-4154-90e0-1a1932dddd40",
+        "total_limit_bytes": 53687091200,
+        "used_bytes": 26843545600,
+        "clean_ip": "172.64.149.23",
+        "status": "OFFLINE",
+        "last_active_time": 0,
+        "down_speed": 0,
+        "up_speed": 0,
+        "created_at": 1780223183,
         "expire_seconds": 2592000,
         "active": true
     }
