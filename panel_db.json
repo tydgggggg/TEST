@@ -67,12 +67,12 @@
     "TEST": {
         "uuid": "7af8ec1f-0b50-467b-87c5-75b542e4e730",
         "total_limit_bytes": 104857600,
-        "used_bytes": 4101232,
+        "used_bytes": 5002790,
         "clean_ip": "104.17.96.13",
         "status": "ONLINE",
-        "last_active_time": 1780307631.0926661,
-        "down_speed": 620941,
-        "up_speed": 56014,
+        "last_active_time": 1780307693.557919,
+        "down_speed": 1230503,
+        "up_speed": 63692,
         "created_at": 1780264519,
         "expire_seconds": 2592000,
         "active": true
