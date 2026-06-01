@@ -28,12 +28,12 @@
     "20GB": {
         "uuid": "b734433b-30f3-43d2-b4f9-c91af64d22d3",
         "total_limit_bytes": 21474836480,
-        "used_bytes": 267630078,
+        "used_bytes": 272442494,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780276591.4220376,
-        "down_speed": 436062,
-        "up_speed": 56546,
+        "last_active_time": 1780276653.072793,
+        "down_speed": 1450460,
+        "up_speed": 58000,
         "created_at": 1780242102,
         "expire_seconds": 2592000,
         "active": true
