@@ -2,12 +2,12 @@
     "6GB": {
         "uuid": "04577598-8a07-4dbc-a26e-0654531378fe",
         "total_limit_bytes": 6442450944,
-        "used_bytes": 1480504501,
+        "used_bytes": 1489166899,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780409754.5928028,
-        "down_speed": 425426,
-        "up_speed": 63872,
+        "last_active_time": 1780409815.8626394,
+        "down_speed": 553998,
+        "up_speed": 67346,
         "created_at": 1780233349,
         "expire_seconds": 2592000,
         "active": true
