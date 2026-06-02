@@ -41,12 +41,12 @@
     "OWENR": {
         "uuid": "a2b2adc9-e175-4a0c-a240-fa53e52e4608",
         "total_limit_bytes": 0,
-        "used_bytes": 2840480657,
+        "used_bytes": 2848965091,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780372577.0639226,
-        "down_speed": 903754,
-        "up_speed": 53653,
+        "last_active_time": 1780372632.936325,
+        "down_speed": 716557,
+        "up_speed": 59066,
         "created_at": 1780263418,
         "expire_seconds": 2592000,
         "active": true
