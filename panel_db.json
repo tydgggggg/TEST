@@ -28,12 +28,12 @@
     "20GB": {
         "uuid": "b734433b-30f3-43d2-b4f9-c91af64d22d3",
         "total_limit_bytes": 21474836480,
-        "used_bytes": 321389079,
+        "used_bytes": 334964775,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780512997.3269327,
-        "down_speed": 459532,
-        "up_speed": 55770,
+        "last_active_time": 1780513058.6180472,
+        "down_speed": 610172,
+        "up_speed": 72135,
         "created_at": 1780242102,
         "expire_seconds": 2592000,
         "active": true
@@ -41,12 +41,12 @@
     "OWENR": {
         "uuid": "a2b2adc9-e175-4a0c-a240-fa53e52e4608",
         "total_limit_bytes": 0,
-        "used_bytes": 3363915832,
+        "used_bytes": 3364777808,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780512991.115932,
-        "down_speed": 543452,
-        "up_speed": 74369,
+        "last_active_time": 1780513057.6170073,
+        "down_speed": 1095561,
+        "up_speed": 64942,
         "created_at": 1780263418,
         "expire_seconds": 2592000,
         "active": true
