@@ -15,12 +15,12 @@
     "5GB": {
         "uuid": "b68e8582-0e9f-4aa8-9d62-df7faa299249",
         "total_limit_bytes": 6442450944,
-        "used_bytes": 1098499956,
+        "used_bytes": 1100507970,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780511895.6602952,
-        "down_speed": 973649,
-        "up_speed": 77147,
+        "last_active_time": 1780511941.5017936,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780233496,
         "expire_seconds": 2592000,
         "active": true
@@ -41,12 +41,12 @@
     "OWENR": {
         "uuid": "a2b2adc9-e175-4a0c-a240-fa53e52e4608",
         "total_limit_bytes": 0,
-        "used_bytes": 3339227139,
+        "used_bytes": 3340318506,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780511888.6545515,
-        "down_speed": 1180520,
-        "up_speed": 64338,
+        "last_active_time": 1780511954.9129362,
+        "down_speed": 1086555,
+        "up_speed": 77040,
         "created_at": 1780263418,
         "expire_seconds": 2592000,
         "active": true
