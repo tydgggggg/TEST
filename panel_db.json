@@ -45,8 +45,8 @@
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
         "last_active_time": 1780635476.869417,
-        "down_speed": 1126426,
-        "up_speed": 73172,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780263418,
         "expire_seconds": 2592000,
         "active": true
