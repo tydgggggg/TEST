@@ -41,12 +41,12 @@
     "OWENR": {
         "uuid": "a2b2adc9-e175-4a0c-a240-fa53e52e4608",
         "total_limit_bytes": 0,
-        "used_bytes": 4358233801,
+        "used_bytes": 4361884157,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780828500.8464618,
-        "down_speed": 1202867,
-        "up_speed": 62769,
+        "last_active_time": 1780828563.1198175,
+        "down_speed": 1351377,
+        "up_speed": 65297,
         "created_at": 1780263418,
         "expire_seconds": 2592000,
         "active": true
@@ -80,12 +80,12 @@
     "Uncle": {
         "uuid": "27807565-421f-428c-a5d0-ee02cf9c6f29",
         "total_limit_bytes": 0,
-        "used_bytes": 116488839,
+        "used_bytes": 121258089,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1780828501.2499804,
-        "down_speed": 809900,
-        "up_speed": 60709,
+        "last_active_time": 1780828552.7118592,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780308094,
         "expire_seconds": 2592000,
         "active": true
