@@ -2,12 +2,12 @@
     "6GB": {
         "uuid": "04577598-8a07-4dbc-a26e-0654531378fe",
         "total_limit_bytes": 6442450944,
-        "used_bytes": 1795458516,
+        "used_bytes": 1796113895,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1781559585.2406943,
-        "down_speed": 908152,
-        "up_speed": 60883,
+        "last_active_time": 1781559633.7096162,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780233349,
         "expire_seconds": 2592000,
         "active": true
@@ -80,12 +80,12 @@
     "Uncle": {
         "uuid": "27807565-421f-428c-a5d0-ee02cf9c6f29",
         "total_limit_bytes": 0,
-        "used_bytes": 10139250331,
+        "used_bytes": 10152451714,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1781559585.4411774,
-        "down_speed": 1182169,
-        "up_speed": 76072,
+        "last_active_time": 1781559647.9291298,
+        "down_speed": 708702,
+        "up_speed": 69247,
         "created_at": 1780308094,
         "expire_seconds": 2592000,
         "active": true
