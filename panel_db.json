@@ -82,10 +82,10 @@
         "total_limit_bytes": 0,
         "used_bytes": 14991213049,
         "clean_ip": "172.64.149.23",
-        "status": "ONLINE",
+        "status": "OFFLINE",
         "last_active_time": 1781679122.075115,
-        "down_speed": 684405,
-        "up_speed": 55266,
+        "down_speed": 0,
+        "up_speed": 0,
         "created_at": 1780308094,
         "expire_seconds": 2592000,
         "active": true
