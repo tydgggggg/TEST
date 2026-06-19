@@ -80,12 +80,12 @@
     "Uncle": {
         "uuid": "27807565-421f-428c-a5d0-ee02cf9c6f29",
         "total_limit_bytes": 0,
-        "used_bytes": 23730520695,
+        "used_bytes": 23733945709,
         "clean_ip": "172.64.149.23",
         "status": "ONLINE",
-        "last_active_time": 1781911530.6309223,
-        "down_speed": 549840,
-        "up_speed": 73569,
+        "last_active_time": 1781911588.0864756,
+        "down_speed": 940617,
+        "up_speed": 72394,
         "created_at": 1780308094,
         "expire_seconds": 2592000,
         "active": true
