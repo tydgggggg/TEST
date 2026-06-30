@@ -43,13 +43,13 @@
         "total_limit_bytes": 0,
         "used_bytes": 5091814413,
         "clean_ip": "172.64.149.23",
-        "status": "OFFLINE",
+        "status": "EXPIRED",
         "last_active_time": 1781006845.3716261,
         "down_speed": 0,
         "up_speed": 0,
         "created_at": 1780263418,
         "expire_seconds": 2592000,
-        "active": true
+        "active": false
     },
     "F44mir": {
         "uuid": "0cc621a8-5a0a-4133-9e80-43294b1febac",
