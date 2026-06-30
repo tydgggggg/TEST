@@ -69,13 +69,13 @@
         "total_limit_bytes": 104857600,
         "used_bytes": 7190913,
         "clean_ip": "104.17.96.13",
-        "status": "OFFLINE",
+        "status": "EXPIRED",
         "last_active_time": 1780307860.7344627,
         "down_speed": 0,
         "up_speed": 0,
         "created_at": 1780264519,
         "expire_seconds": 2592000,
-        "active": true
+        "active": false
     },
     "Uncle": {
         "uuid": "27807565-421f-428c-a5d0-ee02cf9c6f29",
